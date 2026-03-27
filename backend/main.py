@@ -10,8 +10,10 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from backend.database import Base, engine
 from backend.routers import auth, chat, address, orders, menu, preferences
+from backend.seed_data import seed
 
 Base.metadata.create_all(bind=engine)
+seed()
 
 app = FastAPI(title="Food Ordering Assistant API")
 
