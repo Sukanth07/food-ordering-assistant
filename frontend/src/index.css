@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #ff5a5f;
+  --color-primary-hover: #e04e53;
+  --color-sidebar: #1e1e2e;
+  --color-sidebar-hover: #2a2a3d;
+  --color-sidebar-active: #33334a;
+  --color-surface: #ffffff;
+  --color-page: #f5f0eb;
+  --color-chat-bg: #faf7f4;
+  --color-card: #ffffff;
+  --color-card-border: #e8e0d8;
+  --color-input-bg: #f0ebe5;
+  --color-muted: #8c8494;
+  --color-veg: #0f8a0f;
+  --color-nonveg: #b91c1c;
+  --color-highlight: rgba(255, 90, 95, 0.15);
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  background: var(--color-page);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Custom scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-card-border) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--color-card-border);
+  border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted);
+}
+
+/* Hide scrollbar for cuisine banner */
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* Safe area for devices with notches/home indicators */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}

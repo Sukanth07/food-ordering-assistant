@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"d:/Projects/AI Projects/Food Ordering Assistant - New/backend/routers\")",
+      "Bash(mkdir -p \"d:/Projects/AI Projects/Food Ordering Assistant - New/frontend/src/services\")",
+      "Bash(mkdir -p \"d:/Projects/AI Projects/Food Ordering Assistant - New/frontend/src/pages\")",
+      "Bash(mkdir -p \"d:/Projects/AI Projects/Food Ordering Assistant - New/frontend/src/components\")",
+      "Bash(mkdir -p \"d:/Projects/AI Projects/Food Ordering Assistant - New/frontend/public\")",
+      "Bash(npm create:*)",
+      "Bash(rm -rf frontend)",
+      "Bash(mv frontend_temp frontend)"
+    ]
+  }
+}
