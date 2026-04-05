@@ -5,7 +5,9 @@
       "Bash(npx vite:*)",
       "Bash(rm -f \"d:/Projects/AI Projects/Food Ordering Assistant - New/food_ordering.db\")",
       "Bash(backend/venv/Scripts/python -m backend.seed_data)",
-      "Bash(xargs ls:*)"
+      "Bash(xargs ls:*)",
+      "Bash(curl -s http://localhost:8000/)",
+      "Bash(\"backend/venv/Scripts/python.exe\" -c \":*)"
     ]
   }
 }

@@ -93,10 +93,10 @@ def generate_chat_response(messages_history: List[Dict[str, str]], new_message: 
     groq_messages.append({"role": "user", "content": new_message})
 
     completion = client.chat.completions.create(
-        model="qwen/qwen3-32b",
+        model="llama-3.3-70b-versatile",
         messages=groq_messages,
         temperature=0.6,
-        max_completion_tokens=4096,
+        max_completion_tokens=1024,
         top_p=0.95,
         stream=False,
     )

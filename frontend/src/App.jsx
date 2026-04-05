@@ -14,9 +14,9 @@ function PrivateRoute({ children }) {
 
 function Layout({ children }) {
   return (
-    <div className="flex min-h-screen bg-page">
+    <div className="flex h-screen overflow-hidden bg-page">
       <Sidebar />
-      <div className="flex-1 flex flex-col min-w-0 pb-16 md:pb-0">
+      <div className="flex-1 flex flex-col min-w-0 pb-16 md:pb-0 overflow-hidden">
         {children}
       </div>
     </div>

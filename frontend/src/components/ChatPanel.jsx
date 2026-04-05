@@ -52,7 +52,7 @@ export default function ChatPanel({
       </div>
 
       {/* Desktop: side panel */}
-      <div className="hidden md:flex w-95 shrink-0 border-l border-card-border bg-card flex-col h-screen sticky top-0">
+      <div className="hidden md:flex w-95 shrink-0 border-l border-card-border bg-card flex-col h-full">
         <div className="flex items-center justify-between px-4 py-3 border-b border-card-border">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">

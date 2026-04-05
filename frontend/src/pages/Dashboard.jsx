@@ -195,7 +195,7 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <div className="flex-1 flex h-screen overflow-hidden">
+    <div className="flex-1 flex h-full overflow-hidden">
       {/* Main Browse Area */}
       <div className="flex-1 overflow-y-auto">
         <div className="max-w-5xl mx-auto px-4 py-4 md:p-6 space-y-4 md:space-y-6">

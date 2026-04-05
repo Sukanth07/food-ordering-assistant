@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Send, Mic, Bot, User } from "lucide-react";
+import { Send, Mic, Bot, User, Volume2, VolumeX } from "lucide-react";
 
 export default function ChatWindow({
   messages,
@@ -9,11 +9,44 @@ export default function ChatWindow({
 }) {
   const [input, setInput] = useState("");
   const [listening, setListening] = useState(false);
+  const [ttsEnabled, setTtsEnabled] = useState(true);
   const messagesEndRef = useRef(null);
+  const lastSpokenIndexRef = useRef(-1);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, loading]);
+
+  // Auto-speak new assistant messages when TTS is enabled
+  useEffect(() => {
+    if (!ttsEnabled || messages.length === 0) return;
+    const lastIndex = messages.length - 1;
+    const lastMsg = messages[lastIndex];
+    if (
+      lastMsg.role === "assistant" &&
+      lastIndex > lastSpokenIndexRef.current
+    ) {
+      lastSpokenIndexRef.current = lastIndex;
+      const orderRegex = /\[ORDER_CONFIRMED:\s*.+?\]/;
+      const textToSpeak = lastMsg.content.replace(orderRegex, "").trim();
+      if (textToSpeak) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(textToSpeak);
+        utterance.lang = "en-US";
+        utterance.rate = 1;
+        utterance.pitch = 1;
+        window.speechSynthesis.speak(utterance);
+      }
+    }
+  }, [messages, ttsEnabled]);
+
+  // Stop speaking when TTS is toggled off
+  const toggleTts = () => {
+    setTtsEnabled((prev) => {
+      if (prev) window.speechSynthesis.cancel();
+      return !prev;
+    });
+  };
 
   const handleSend = () => {
     if (!input.trim() || loading) return;
@@ -154,6 +187,17 @@ export default function ChatWindow({
 
       <div className="p-4 border-t border-card-border bg-card">
         <div className="flex items-center gap-2">
+          <button
+            onClick={toggleTts}
+            title={ttsEnabled ? "Disable voice output" : "Enable voice output"}
+            className={`p-3 rounded-xl transition-colors ${
+              ttsEnabled
+                ? "bg-primary/15 text-primary"
+                : "bg-input-bg text-muted hover:bg-card-border"
+            }`}
+          >
+            {ttsEnabled ? <Volume2 size={20} /> : <VolumeX size={20} />}
+          </button>
           <button
             onClick={handleVoice}
             className={`p-3 rounded-xl transition-colors ${
