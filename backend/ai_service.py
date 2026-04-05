@@ -96,7 +96,7 @@ def generate_chat_response(messages_history: List[Dict[str, str]], new_message: 
         model="llama-3.3-70b-versatile",
         messages=groq_messages,
         temperature=0.6,
-        max_completion_tokens=1024,
+        max_completion_tokens=512,
         top_p=0.95,
         stream=False,
     )
